@@ -1,20 +1,6 @@
 
 let allData = "Habi jabi data";
 
-function fetchUsers() {
-    let url = "https://jsonplaceholder.typicode.com/users"
-    fetch(url)
-        .then(response =>
-            response.json()
-        )
-        .then(data => {
-            allData = structuredClone(data)
-            console.log("All data inside fetch is,", allData)
-        })
-        .catch(err => console.log(err))
-        .finally(() => console.log("Runs anyway"))
-}
-
 function fetchJokes() {
     const url = 'https://dad-jokes.p.rapidapi.com/random/joke';
     const options = {
@@ -40,14 +26,7 @@ function fetchJokes() {
 
 
 window.addEventListener("load", fetchJokes)
-console.log("All data is,", allData)
 
-// function willSheCall() {
-//     console.log("inside function")
-//     return new Promise((resolve, reject) => {
-//         resolve("No calls")
-//     })
-// }
 
 function populateData(data) {
     document.getElementById("setup").innerText = data?.body[0]?.setup
