@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Primary Meta Tags -->
+    <title>Numberooz | Fun facts about numbers</title>
+    <meta name="title" content="Numberooz | Fun facts about numbers" />
+    <meta name="description"
+        content="Explore fascinating facts about numbers on Numberooz. Simply enter a number and uncover fun trivia associated with it. Enhance your numerical knowledge with entertaining tidbits on digits, from mathematical marvels to historical significance" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://numberooz.netlify.app" />
+    <meta property="og:title" content="Numberooz | Fun facts about numbers" />
+    <meta property="og:description"
+        content="Explore fascinating facts about numbers on Numberooz. Simply enter a number and uncover fun trivia associated with it. Enhance your numerical knowledge with entertaining tidbits on digits, from mathematical marvels to historical significance" />
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://numberooz.netlify.app" />
+    <meta property="twitter:title" content="Numberooz | Fun facts about numbers" />
+    <meta property="twitter:description"
+        content="Explore fascinating facts about numbers on Numberooz. Simply enter a number and uncover fun trivia associated with it. Enhance your numerical knowledge with entertaining tidbits on digits, from mathematical marvels to historical significance" />
+
+
+
+    <style>
+        .loader {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 1s linear infinite
+        }
+
+        .loader::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: 2px solid #FFF;
+            animation: prixClipFix 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes prixClipFix {
+            0% {
+                clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+            }
+
+            25% {
+                clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+            }
+
+            50% {
+                clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+            }
+
+            75% {
+                clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+            }
+
+            100% {
+                clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+            }
+        }
+    </style>
+</head>
+
+<body class="relative">
+
+    <nav class="py-3 px-5 text-xl md:text-4xl serif flex flex-col">
+        Numberooz
+        <span class="text-sm my-1 sans text-purple-400">Few facts about numbers</span>
+    </nav>
+    <canvas class="confetti" id="canvas"></canvas>
+    <button
+        class="fixed floating rounded-full bg-purple-700 hover:bg-purple-800 h-12 w-12 flex items-center justify-center bottom-10 right-5 cursor-pointer z-10"
+        title="Randomise" id="shuffle">
+        <span class="material-symbols-outlined" id="shuffleIcon">
+            shuffle
+        </span>
+    </button>
+
+    <main class="container p-4 pb-8 h-full">
+
+
+        <form class="relative my-8 flex flex-wrap  justify-center" id="numberForm">
+
+            <input type="text" id="numberTest" name="number" placeholder="Enter a number"
+                class="w-1/2 lg:w-2/5 rounded-s-md border border-gray-800 focus:border-gray-700 focus:ring-0 focus:ring-indigo-200 text-base outline-none text-gray-50 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:ring-2 invalid:ring-red-500"
+                minlength="1" pattern="[0-9]+">
+
+
+            <button
+                class="inline-flex gap-2 items-center justify-center text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-800 rounded-e-md text-sm md:text-md "
+                id="factsbtn"><span id="loader"></span> Get Factz</button>
+        </form>
+
+        <section id="empty" class="flex flex-col h-full w-full items-center justify-center my-5">
+            <img src="empty.svg" alt="empty" class="w-64 h-64 ">
+            <span class="text-gray-300 my-5 animate-pulse">Start out by typing a number...</span>
+
+        </section>
+
+        <section id="results" class="flex flex-wrap">
+            <div class="p-4 w-full md:w-1/3 content hidden">
+                <div class="h-full border border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h2 class="tracking-widest text-xs font-medium text-gray-400 mb-1">Year Fact</h2>
+                        <p class="leading-relaxed mb-3" id="yearFact"></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 w-full md:w-1/3 content hidden">
+                <div class="h-full border border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h2 class="tracking-widest text-xs font-medium text-gray-400 mb-1">Number Fact</h2>
+                        <p class="leading-relaxed mb-3" id="numFact"></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 w-full md:w-1/3 content hidden">
+                <div class="h-full border border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h2 class="tracking-widest text-xs font-medium text-gray-400 mb-1">Number Trivia</h2>
+                        <p class="leading-relaxed mb-3" id="triviaFact"></p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="absolute bottom-0 flex w-full items-center justify-center text-center py-1 gap-x-2">Made with
+        <span class="text-pink-500 ">Love</span> and
+        <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/26a1/512.webp" type="image/webp">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/26a1/512.gif" alt="⚡" class="h-4 w-4" width="24"
+                height="24">
+        </picture> by <a href="https://devgg.me" target="_blank" rel="noopener noreferrer" class="underline"> Gourav</a>
+    </footer>
+    <script src="script.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FMBC5CZP8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7FMBC5CZP8');
+    </script>
+</body>
+
+</html>

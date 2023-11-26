@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://db.onlinewebfonts.com/c/11b9313c156261bdee0bc8b745b34450?family=DwarvenAxe+BB+W00+Regular"
+        rel="stylesheet" preload="true">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="nav w-full text-4xl p-4 "> Dungeons and Dragons!</nav>
+    <main>
+        <div
+            class="gameStartContent p-4 text-md rounded-md lg:text-2xl flex flex-col items-center justify-center gap-3">
+            Welcome to the adventurous world of Efror
+            <button class="inline-flex text-white  border-0 py-1 px-3 focus:outline-none rounded text-md" id="startBtn">
+                Start Game
+            </button>
+        </div>
+        <span id="loader"></span>
+        <div class="gameContent w-11/12 h-full flex flex-col justify-between hidden">
+            <div class="gameContentItems h-11/12">
+
+            </div>
+            <form class="flex justify-between w-full" id="playForm">
+                <input type="prompt" id="prompt" name="prompt" placeholder="Enter some text"
+                    class="w-full rounded focus:border-indigo-500 text-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <button class="inline-flex text-white  border-0 py-1 px-3 focus:outline-none rounded text-md"
+                    id="sendBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-send-horizontal">
+                        <path d="m3 3 3 9-3 9 19-9Z" />
+                        <path d="M6 12h16" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+
+</html>

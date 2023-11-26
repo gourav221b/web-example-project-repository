@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="output"></p>
+    <button id="btn">Get results</button>
+</body>
+<script>
+
+    const output = document.getElementById("output");
+    const btn = document.getElementById("btn");
+    const url = 'https://eager-jodhpurs-bee.cyclic.app/game'
+
+    const fetchResults = async function () {
+        console.log("first")
+        console.log("second")
+        let data = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ input: "START GAME" })
+        })
+        console.log(data)
+        console.log("fourth")
+
+    }
+
+
+
+    // add event listeners
+
+    btn.addEventListener("click", () => {
+        console.log("Button clicked");
+        fetchResults();
+        // for (let i = 0; i < 10000; i++) { console.log(i) };
+        console.log("Button clicked *2");
+    })
+
+    // const res = () => {
+    //     setTimeout(() => {
+    //         console.log("third")
+    //     }, 2000);
+    // }
+    // console.log("first")
+    // console.log("second")
+    // res()
+    // console.log("fourth")
+
+
+</script>
+
+</html>

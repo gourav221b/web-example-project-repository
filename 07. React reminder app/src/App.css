@@ -1,0 +1,144 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body
+{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.mainWrapper{
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  padding: 2%;
+  font-weight: bold;
+  font-size: 2rem;
+   background-color: rgba(225, 225, 225, 0.212);
+  border-bottom: 1px solid rgb(71, 71, 71);
+  display: flex;
+  align-items: center;
+}
+
+
+.footer
+{
+  width: 100%;
+  background: #222222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 2%;font-weight: bold;
+    font-size: 2rem;
+}
+
+
+
+.reminderWrapper
+{
+  flex: 1;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.reminderFormWrapper
+{
+  
+ 
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  
+}
+.reminderForm
+{
+  background-color: rgb(241, 241, 241);
+  padding:6% 4%;
+  width: 100%;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+.form-input-wrapper
+{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4%;
+}
+
+.reminderInput
+{
+  background: transparent;
+  border: none;
+  margin-top: 2%;
+  border-bottom: 2px solid black;
+}
+
+.btn
+{
+  padding: 3% 6%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+
+}
+.btn-form
+{
+  background: #007bff;
+  color: #fff;
+}
+
+.reminderListWrapper{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.reminderCard{
+  background-color: rgb(210, 231, 255);
+  border: 2px solid black;
+  padding: 2%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1%;
+}
+.reminderCard .content
+{
+  flex: 1;
+}
+.btn-card{
+  background-color: #1f1f1f;
+  color: #fff;
+  margin-top: 4%;
+}
+.remindTime{
+  font-weight: 600;
+}
+
+.remindTitle{
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.remindDesc{
+  font-size: 18px;
+  margin: 4% 0;
+}
