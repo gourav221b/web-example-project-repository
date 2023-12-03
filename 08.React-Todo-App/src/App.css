@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  width: 100%;
+  background: linear-gradient(to right, #282a3b, #191b27);
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.allItemsWrapper {
+  max-height: 90dvh;
+  width: 90%;
+  margin:  auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 5%;
+  overflow: scroll;
+}
+
+.allItemsWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.itemWrapper {
+  background-color: #2f3241;
+  display: flex;
+  margin: 10px;
+  width: 100%;
+  padding: 5%;
+  font-weight: 600;
+  border-radius: 5px;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.itemUser{
+  font-family: "Helvetica Neue", Helvetica, Arial;
+    font-weight: 400;
+    color: rgb(185, 185, 185);
+    font-size: 0.9rem;
+    
+}
+.circle {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #42c2f9;
+  margin-top: 2%;
+  margin-right: 2%;
+}
+
+.itemWrapper:nth-of-type(3n+1) .circle {
+  background-color: #f9bf42;
+}
+
+.itemWrapper:nth-of-type(3n+1) .itemTitle {
+  color: #f9bf42;
+}
+
+.itemWrapper:nth-of-type(3n+2) .circle {
+  background-color: #42c2f9;
+}
+
+.itemWrapper:nth-of-type(3n+2) .itemTitle {
+  color: #42c2f9;
+}
+
+.itemWrapper:nth-of-type(3n+3) .circle {
+  background-color: #be8bf9;
+}
+
+.itemWrapper:nth-of-type(3n+3) .itemTitle {
+  color: #be8bf9;
+}
+
+.itemFooter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.dateTime {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-weight: 400;
+  color: rgb(185, 185, 185);
+  font-size: 0.8rem;
+
+}
+
+
+@media screen and (min-width:760px) {
+  .itemWrapper {
+    width: 45%;
+    padding: 2%;
+  }
+}
+
+@media screen and (min-width:1000px) {
+ 
+  .allItemsWrapper {
+    padding: 5% 0;
+  }
+
+  .itemWrapper {
+    width: 31%;
+    padding: 2%;
+  }
+}
