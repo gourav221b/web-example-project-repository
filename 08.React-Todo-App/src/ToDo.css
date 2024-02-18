@@ -1,0 +1,101 @@
+*::-webkit-scrollbar{
+    display: none;
+}
+main{
+    width: 100%;
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5% 0;
+    gap: 20px 0;
+}
+
+form 
+{
+ display: flex;   
+ width: min(600px,90vw);
+ background: transparent;
+ /* border: 2px solid #fff; */
+ border-radius: 10px;
+ height: 50px;
+ 
+}
+input,input:focus{
+    background: transparent;
+    border:transparent;
+    flex: 1;
+    padding:10px;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: transparent;
+    border: 2px solid #e0ae08;
+    border-right: 0;
+}
+ input::placeholder{
+ color: #e5e5e5;
+}
+
+form button{
+    background-color: #e0ae086c;
+    border: 2px solid #e0ae08; 
+    color:#fff;
+    width: 150px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 16px;
+}
+
+.toDoSectionWrapper{
+    width: min(600px, 90vw);
+    height: 80vh;
+    overflow-y: scroll;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px 0 ;
+}
+.toDoItem{
+    border: 2px solid rgb(114, 67, 172);
+    background: rgba(114, 67, 172, 0.253);
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    &:hover{
+        background: rgba(114, 67, 172, 0.55);
+    }
+}
+.toDoItem.completed{
+    border-color: rgb(46, 139, 86);
+    background-color: rgba(46, 139, 86, 0.272);
+}
+.toDoItem span{
+    flex:1;
+}
+.toDoItem button{
+    background-color: transparent;
+    /* background-color: rgba(247, 2, 2, 0.34); */
+    /* border: 1px solid #ff0000; */
+    border: 1px solid transparent;
+    color: #f97d7d;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    &:hover{
+    background-color: rgb(247, 2, 2);
+    border: 1px solid #ff0000;
+    color: #fff;
+    }
+}
+
+
+/* outer radius= inner-radius + padding */

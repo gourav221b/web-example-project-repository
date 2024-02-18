@@ -1,71 +1,100 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { useEffect } from "react";
-function App() {
-  // 1. a list of todos to render.
-  // 2. a list of users to correspond to them todos.
-  // 3. a loading state
-  const [todos, setTodos] = useState([]);
+import "./ToDo.css";
+export default function App() {
+  const [toDos, setToDos] = useState([
+    {
+      id: 0,
+      title: "Something to do",
+      completed: false,
+    },
+    {
+      id: 1,
+      title: "Something to do",
+      completed: true,
+    },
+  ]);
 
-  const [users, setUsers] = useState([]);
+  const addToDo = (e) => {
+    e.preventDefault();
+    let todoData = new FormData(e.target);
+    let toDo = {
+      id: toDos[toDos.length - 1]?.id + 1,
+      title: todoData.get("taskInput"),
+      completed: false,
+    };
+    setToDos([...toDos, toDo]);
+    e.target.reset();
+  };
+  const deleteToDo = (todo) => {
+    let temp = structuredClone(toDos);
+    let filteredList = temp.filter((item) => item.id !== todo.id);
+    setToDos(filteredList);
+  };
 
-  const [loading, setLoading] = useState(false);
-
-  function randomDate(start = new Date(2023, 12, 1), end = new Date()) {
-    return new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-  }
   useEffect(() => {
-    const fetchTodos = async () => {
-      const todoResult = await fetch(
-        "https://jsonplaceholder.typicode.com/todos"
-      );
-      if (todoResult?.ok) {
-        const data = await todoResult.json();
-        return data;
-      }
-    };
-    const fetchUsers = async () => {
-      const usersResult = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      if (usersResult?.ok) {
-        const data = await usersResult.json();
-        return data;
-      }
-    };
-    const populateData = async () => {
-      setLoading(true);
-      const [todo, users] = await Promise.all([fetchTodos(), fetchUsers()]);
-      setTodos(todo);
-      setUsers(users);
-      setLoading(false);
-    };
-    populateData();
-  }, []);
+    localStorage.setItem("AllToDos", JSON.stringify(toDos));
+  }, [toDos]);
+
   return (
-    <section className='allItemsWrapper'>
-      {loading
-        ? "Loading..."
-        : todos?.map((todo, idx) => (
-            <div className='itemWrapper' key={todo?.id}>
-              <div className='circle'></div>
-              <div className='content'>
-                <span className='itemTitle'>{todo?.title}</span>
-                <div className='itemFooter'>
-                  <span className='itemUser'>
-                    - {users?.find((user) => user?.id === todo?.userId)?.name}
-                  </span>
-                  <span className='dateTime'>
-                    {randomDate()?.toDateString()}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-    </section>
+    <main>
+      <form onSubmit={addToDo}>
+        <input
+          type='text'
+          placeholder='Enter todays task'
+          name='taskInput'
+          id='taskInput'
+        />
+        <button>Add task</button>
+      </form>
+      <section className='toDoSectionWrapper'>
+        {toDos?.length == 0 && <>No task available yet</>}
+        {toDos.map((todo, idx) => (
+          <div
+            key={idx}
+            className={"toDoItem " + (todo.completed ? "completed" : "")}
+          >
+            <span> {todo.title}</span>
+            <button onClick={() => deleteToDo(todo)}>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='lucide lucide-check-circle-2'
+              >
+                <circle cx='12' cy='12' r='10' />
+                <path d='m9 12 2 2 4-4' />
+              </svg>
+            </button>
+            <button onClick={() => deleteToDo(todo)}>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='lucide lucide-trash-2'
+              >
+                <path d='M3 6h18' />
+                <path d='M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6' />
+                <path d='M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2' />
+                <line x1='10' x2='10' y1='11' y2='17' />
+                <line x1='14' x2='14' y1='11' y2='17' />
+              </svg>
+            </button>
+          </div>
+        ))}
+      </section>
+    </main>
   );
 }
-
-export default App;
