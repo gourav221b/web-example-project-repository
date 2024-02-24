@@ -31,6 +31,9 @@ export default function App() {
     let filteredList = temp.filter((item) => item.id !== todo.id);
     setToDos(filteredList);
   };
+  const toggleStatus = () => {
+    //implement this. Home work. !!!
+  };
 
   useEffect(() => {
     localStorage.setItem("AllToDos", JSON.stringify(toDos));
@@ -55,7 +58,7 @@ export default function App() {
             className={"toDoItem " + (todo.completed ? "completed" : "")}
           >
             <span> {todo.title}</span>
-            <button onClick={() => deleteToDo(todo)}>
+            <button onClick={toggleStatus}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='24'
