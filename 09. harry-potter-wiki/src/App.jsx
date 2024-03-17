@@ -14,7 +14,7 @@ function App() {
       try {
         setLoading(true);
         let response = await fetch(
-          "https://hp-worker.slggourav.workers.dev/?q=https://hp-api.onrender.com/api/characters",
+          "https://cors-bypass.slggourav.workers.dev/?q=https://hp-api.onrender.com/api/characters",
           options
         );
 
